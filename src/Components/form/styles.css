@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: .5rem 1rem;
   border-radius: 5px;
   background: linear-gradient(145deg, #f0f0f0, #cacaca);
   box-shadow: 2px 2px 15px #a1a1a1;
@@ -22,13 +22,13 @@ form {
 .colum {
   display: flex;
   flex-direction: column;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   width: 100%;
 }
 .row {
   display: flex;
   flex-direction: row;
-  gap: 0.5rem;
+  gap: 0.3rem;
   margin-top: 0.5rem;
   width: 100%;
 }
@@ -42,7 +42,7 @@ input[type="email"],
 input[type="date"],
 input[type="tel"] {
   width: 100%;
-  height: 2.5rem;
+  height: 2rem;
   padding-left: 1rem;
   border: 1px solid rgb(182, 182, 182);
   outline: none;

@@ -8,6 +8,7 @@ import schema from './valdiation'
 
 
 
+
 const Form = () => {
     
     const { register, handleSubmit, formState: { errors }, } = useForm({
@@ -75,10 +76,10 @@ const Form = () => {
                     <div className='colum DDD' >
                         <label htmlFor="DDD"><strong>DDD</strong></label>
                         <input style={{ border: errors.DDD ? '1px solid red' : '' }}
-                            type="tel"
+                            type="number"
                             name='DDD'
-                            id="DDD"
-                            maxLength="2"
+                            id="DDD"                        
+                            maxlength="2"
                             placeholder='DDD'
                             {...register("DDD")} />
                         <span className="error">{errors?.DDD?.message}</span>
@@ -86,9 +87,9 @@ const Form = () => {
                     <div className='colum'>
                         <label htmlFor="tel"><strong>Tel</strong></label>
                         <input style={{ border: errors.tel ? '1px solid red' : '' }}
-                            type="tel"
+                            type="number"
                             id="tel"
-                            maxLength="9"
+                            maxlength="9"                    
                             placeholder='XXXXX-XXXX'
                             {...register("tel")} />
                         <span className="error">{errors?.tel?.message}</span>

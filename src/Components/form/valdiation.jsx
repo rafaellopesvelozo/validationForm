@@ -1,5 +1,4 @@
 import * as yup from 'yup'
-
 const schema = yup.object().shape({
     name: yup
         .string()
@@ -22,7 +21,7 @@ const schema = yup.object().shape({
         .required('Required field !'),
     DDD: yup
         .string()
-        .min(2,'min 2 characters')
+        .min(2,'2 characters')
         .max(2)
         .required('Required !'),
     tel: yup
