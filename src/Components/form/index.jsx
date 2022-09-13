@@ -4,32 +4,19 @@ import './styles.css'
 //hook form
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from "yup";
-import { onlyLetters, tel, DDD } from '../utils/validation';
+import schema from './valdiation'
 
 
 
 const Form = () => {
-    const schema = yup.object().shape({
-        name: yup.string().matches(onlyLetters).min(3, 'mínimo 3 caracteres').required('Required field !'),
-        surName: yup.string().matches(onlyLetters).min(3, 'mínimo 3 caracteres').required('Required field !'),
-        lastName: yup.string().matches(onlyLetters).min(3, 'mínimo 3 caracteres').required('Required field !'),
-        birthDate: yup.string().required('Required field !'),
-        email: yup.string().email().required('Required field !'),
-        DDD: yup.string().matches(DDD).min(2, 'mínimo 2 caracteres').required('Required !'),
-        tel: yup.string().matches(tel).min(9, 'mínimo 9 caracteres').max(9, 'máximo 9 caracteres').required('Required field !'),
-        aboutLanguage: yup.string().required('Required field !'),
-
-    });
-
+    
     const { register, handleSubmit, formState: { errors }, } = useForm({
         resolver: yupResolver(schema)
     });
 
-    const newUser = (user) => {
-        console.log(user)
+    const newUser = (data) => {
+        console.log(data)
     }
-    console.log(errors)
     return (
         <div className='formContainer'>
             <div className="title">
@@ -40,46 +27,75 @@ const Form = () => {
                 <div className='row'>
                     <div className='colum'>
                         <label htmlFor="name"><strong>Name</strong> </label>
-                        <input style={{ border: errors.name ? '1px solid red' : '' }} type="text" id="name" placeholder='First name' {...register("name")} />
-
+                        <input style={{ border: errors.name ? '1px solid red' : '' }}
+                            type="text"
+                            id="name"
+                            placeholder='First name'
+                            {...register("name")} />
+                        <span className="error">{errors?.name?.message}</span>
                     </div>
                     <div className='colum'>
                         <label htmlFor="surName"><strong>Surname</strong></label>
-                        <input style={{ border: errors.surName ? '1px solid red' : '' }} type="text" id="surName" placeholder='Surname' {...register("surName", { pattern: /^[A-Za-z]+$/i })} />
-
+                        <input style={{ border: errors.surName ? '1px solid red' : '' }}
+                            type="text"
+                            id="surName"
+                            placeholder='Surname'
+                            {...register('surName')} />
+                        <span className="error">{errors?.surName?.message}</span>
                     </div>
                     <div className='colum'>
                         <label htmlFor="lastName"><strong>Last Name</strong></label>
-                        <input style={{ border: errors.lastName ? '1px solid red' : '' }} type="text" id="lastName" placeholder='Last Name' {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-
+                        <input style={{ border: errors.lastName ? '1px solid red' : '' }}
+                            type="text"
+                            id="lastName"
+                            placeholder='Last Name'
+                            {...register('lastName')} />
+                        <span className="error">{errors?.lastName?.message}</span>
                     </div>
                 </div>
                 <div className='colum'>
                     <label htmlFor="birthDate"><strong>Birth date</strong></label>
-                    <input style={{ border: errors.birthDate ? '1px solid red' : '' }} type="date" id="birthDate" {...register("birthDate")} />
+                    <input style={{ border: errors.birthDate ? '1px solid red' : '' }}
+                        type="date"
+                        id="birthDate"
+                        {...register('birthDate')} />
+                    <span className="error">{errors?.birthDate?.message}</span>
                 </div>
 
                 <div className='colum'>
                     <label htmlFor="email"><strong>E-mail</strong></label>
-                    <input style={{ border: errors.email ? '1px solid red' : '' }} type='email' id="email" placeholder='e-mail' {...register("email", { pattern: /[a-z]+@[a-z]+\.com(\.br)*/ })} />
-
+                    <input style={{ border: errors.email ? '1px solid red' : '' }}
+                        type='email'
+                        id="email"
+                        placeholder='e-mail'
+                        {...register('email')} />
+                    <span className="error">{errors?.email?.message}</span>
                 </div>
                 <div className='row tel'>
                     <div className='colum DDD' >
                         <label htmlFor="DDD"><strong>DDD</strong></label>
-                        <input style={{ border: errors.DDD ? '1px solid red' : '' }} type="tel" id="DDD" maxLength="2" placeholder='DDD' {...register("DDD")} />
-
+                        <input style={{ border: errors.DDD ? '1px solid red' : '' }}
+                            type="tel"
+                            name='DDD'
+                            id="DDD"
+                            maxLength="2"
+                            placeholder='DDD'
+                            {...register("DDD")} />
+                        <span className="error">{errors?.DDD?.message}</span>
                     </div>
                     <div className='colum'>
                         <label htmlFor="tel"><strong>Tel</strong></label>
-                        <input style={{ border: errors.tel ? '1px solid red' : '' }} type="tel" id="tel" maxLength="9" placeholder='00000-0000' {...register("tel")} />
-
+                        <input style={{ border: errors.tel ? '1px solid red' : '' }}
+                            type="tel"
+                            id="tel"
+                            maxLength="9"
+                            placeholder='XXXXX-XXXX'
+                            {...register("tel")} />
+                        <span className="error">{errors?.tel?.message}</span>
                     </div>
                 </div>
                 <div className='colum'>
-
-                    <p><strong>Qual linguagem de programação você mais gosta ?</strong></p>
-
+                    <p><strong>What programming language do you like the most?</strong></p>
                     <div className='row radios'>
                         <label htmlFor="javaScript"><strong>JavaScript</strong></label>
                         <input type="radio" name='javaScript' id="javaScript" value='javaScript' />
@@ -112,9 +128,9 @@ const Form = () => {
                         <input type="radio" name='Ruby' id="Ruby" value='Ruby' />
                     </div>
                     <div className='colum'>
-                        <label htmlFor="aboutLanguage"><strong>Descreva um pouco sobre sua linguagem de programação favorita</strong></label>
+                        <label htmlFor="aboutLanguage"><strong>Describe a little about your favorite programming language</strong></label>
                         <textarea style={{ border: errors.aboutLanguage ? '1px solid red' : '' }} id="aboutLanguage" cols="30" rows="10" {...register("aboutLanguage")} ></textarea>
-
+                        <span className="error">{errors?.aboutLanguage?.message}</span>
                     </div>
                 </div>
                 <button type="submit">SUBMIT</button>
