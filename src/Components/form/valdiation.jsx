@@ -3,14 +3,17 @@ const schema = yup.object().shape({
     name: yup
         .string()
         .min(2, 'Minimum 2 characters')
+        .lowercase()
         .required('Required field !'),
     surName: yup
         .string()
         .min(2, 'Minimum 2 characters')
+        .lowercase()
         .required('Required field !'),
     lastName: yup
         .string()
         .min(2, 'Minimum 2 characters')
+        .lowercase()
         .required('Required field !'),
     birthDate: yup
         .string()
@@ -21,9 +24,10 @@ const schema = yup.object().shape({
         .required('Required field !'),
     DDD: yup
         .string()
-        .min(2,'2 characters')
-        .max(2)
-        .required('Required !'),
+        .min(2, 'DDD invalid !')
+        .max(2, 'DDD invalid !')
+        .required('DDD invalid !'),
+        
     tel: yup
         .string()
         .min(9, 'Enter 9 characters')

@@ -27,7 +27,7 @@ const Form = () => {
             <form action="#" onSubmit={handleSubmit(newUser)}>
                 <div className='row'>
                     <div className='colum'>
-                        <label htmlFor="name"><strong>Name</strong> </label>
+                        <label htmlFor="name"><strong>Name *</strong> </label>
                         <input style={{ border: errors.name ? '1px solid red' : '' }}
                             type="text"
                             id="name"
@@ -36,7 +36,7 @@ const Form = () => {
                         <span className="error">{errors?.name?.message}</span>
                     </div>
                     <div className='colum'>
-                        <label htmlFor="surName"><strong>Surname</strong></label>
+                        <label htmlFor="surName"><strong>Surname *</strong></label>
                         <input style={{ border: errors.surName ? '1px solid red' : '' }}
                             type="text"
                             id="surName"
@@ -45,7 +45,7 @@ const Form = () => {
                         <span className="error">{errors?.surName?.message}</span>
                     </div>
                     <div className='colum'>
-                        <label htmlFor="lastName"><strong>Last Name</strong></label>
+                        <label htmlFor="lastName"><strong>Last Name *</strong></label>
                         <input style={{ border: errors.lastName ? '1px solid red' : '' }}
                             type="text"
                             id="lastName"
@@ -55,7 +55,7 @@ const Form = () => {
                     </div>
                 </div>
                 <div className='colum'>
-                    <label htmlFor="birthDate"><strong>Birth date</strong></label>
+                    <label htmlFor="birthDate"><strong>Birth date *</strong></label>
                     <input style={{ border: errors.birthDate ? '1px solid red' : '' }}
                         type="date"
                         id="birthDate"
@@ -64,9 +64,9 @@ const Form = () => {
                 </div>
 
                 <div className='colum'>
-                    <label htmlFor="email"><strong>E-mail</strong></label>
+                    <label htmlFor="email"><strong>E-mail *</strong></label>
                     <input style={{ border: errors.email ? '1px solid red' : '' }}
-                        type='email'
+                        type='text'
                         id="email"
                         placeholder='e-mail'
                         {...register('email')} />
@@ -74,18 +74,18 @@ const Form = () => {
                 </div>
                 <div className='row tel'>
                     <div className='colum DDD' >
-                        <label htmlFor="DDD"><strong>DDD</strong></label>
+                        <label htmlFor="DDD"><strong>DDD *</strong></label>
                         <input style={{ border: errors.DDD ? '1px solid red' : '' }}
                             type="number"
                             name='DDD'
-                            id="DDD"                        
+                            id="DDD"                      
                             maxlength="2"
                             placeholder='DDD'
                             {...register("DDD")} />
                         <span className="error">{errors?.DDD?.message}</span>
                     </div>
                     <div className='colum'>
-                        <label htmlFor="tel"><strong>Tel</strong></label>
+                        <label htmlFor="tel"><strong>Phone *</strong></label>
                         <input style={{ border: errors.tel ? '1px solid red' : '' }}
                             type="number"
                             id="tel"
@@ -96,7 +96,7 @@ const Form = () => {
                     </div>
                 </div>
                 <div className='colum'>
-                    <p><strong>What programming language do you like the most?</strong></p>
+                    <p><strong>What programming language do you like the most? *</strong></p>
                     <div className='row radios'>
                         <label htmlFor="javaScript"><strong>JavaScript</strong></label>
                         <input type="radio" name='javaScript' id="javaScript" value='javaScript' />
@@ -129,7 +129,7 @@ const Form = () => {
                         <input type="radio" name='Ruby' id="Ruby" value='Ruby' />
                     </div>
                     <div className='colum'>
-                        <label htmlFor="aboutLanguage"><strong>Describe a little about your favorite programming language</strong></label>
+                        <label htmlFor="aboutLanguage"><strong>Describe a little about your favorite programming language. *</strong></label>
                         <textarea style={{ border: errors.aboutLanguage ? '1px solid red' : '' }} id="aboutLanguage" cols="30" rows="10" {...register("aboutLanguage")} ></textarea>
                         <span className="error">{errors?.aboutLanguage?.message}</span>
                     </div>

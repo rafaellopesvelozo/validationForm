@@ -95,9 +95,9 @@ button:hover {
   background-color: rgb(38, 168, 38);
 }
 
+/*input error style*/
 .error{
-  color: red;
-  margin-top: .2rem;
+  color: rgb(243, 91, 91);
   font-size: .7rem;
+  margin-top: 3px;
 }
-
